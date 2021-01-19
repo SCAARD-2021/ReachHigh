@@ -1,0 +1,15 @@
+<h1>Welcome to ReachHigh!</h1>
+<h3>A place where you know your demand</h3>
+Enter your URL <input type="text" #url>
+
+<button (click)="getApp(url)">Get</button>
+ <button (click)="getReview(url)"> Review</button>
+
+<h1 *ngIf="notNull">{{app.title}}</h1>
+<img src={{app.icon}} *ngIf="notNull">
+
+<div *ngIf="notNullOne">
+    <ol>
+        <li *ngFor="let data of reviews.results.data">{{data.text}}</li>
+    </ol>
+</div>
