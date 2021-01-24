@@ -137,7 +137,7 @@ router.get('/apps/:appId/reviews', function (req, res, next) {
     return apps;
   }
 
-  const opts = Object.assign({appId: req.params.appId}, req.query);
+  const opts = Object.assign({appId: req.params.appId,num:1000}, req.query);
   gplay.reviews(opts)
     .then(toList)
     .then(paginate)
