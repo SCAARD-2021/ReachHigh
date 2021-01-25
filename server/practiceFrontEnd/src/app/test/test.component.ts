@@ -47,4 +47,8 @@ export class TestComponent implements OnInit {
         console.log(app);
     })
   }
+
+  counter(i: number) {
+    return new Array(i);
+}
 }
