@@ -1,11 +1,10 @@
+
 h1{
     font-family: fontHead;
     text-align: center;
     font-style: italic;
-    color: rgb(44, 123, 17);
-    font-size: 60px;
-    font-weight: 900;
-    margin-right: 50px;
+    color: rgb(218, 255, 249);
+    font-size: 50px;
 }
 
 
@@ -19,23 +18,16 @@ h1{
 
 
   #userInput{
-    background-color: rgba(205, 255, 194, 0.8);
-    border: 1px solid rgba(0, 0, 0, 0.8);
-      margin-top: 30px;
-      margin-bottom: 20px;
-      padding-bottom: 100px;
-      padding-top: 80px;
-
-
+      margin-left: 180px;
+      margin-top: 50px;
 
   }
   #userInput>button{
-      margin-left: 30px;
+      margin-left: 50px;
       font-size: 30px;
-      width: 100px;
   }
   #appImage,#review{
-    background-color: rgba(214, 255, 205, 0.8);
+    background-color: rgba(255, 255, 255, 0.8);
     border: 1px solid rgba(0, 0, 0, 0.8);
     padding: 20px;
     font-size: 30px;
@@ -44,11 +36,6 @@ h1{
 
   #no{
     margin-left: 50px;
-  }
-
-  #yes,#no{
-      font-size: 25px;
-      width: 80px;
   }
 
 
@@ -67,11 +54,7 @@ h1{
     border-bottom-style: groove;
     background-color:rgba(255, 255, 255, 0.2);;
     outline: none;
-    height: 20px;
-    width: 78%;
-    margin-left: 25px;
-    font-size: 22px;
-
+    font-size: 28px;
 }
 
 ::placeholder{
