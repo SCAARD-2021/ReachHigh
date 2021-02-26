@@ -51,7 +51,7 @@ playstore_data['Summation of 4star+5star'] = np.where(playstore_data['Summation 
 playstore_data["Downloads"]['50,000,000+'] = 1
 # playstore_data["points"][1:2] =
 print(playstore_data.head(5))
-
+print('Downloads')
 
 
 
