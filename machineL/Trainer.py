@@ -16,7 +16,7 @@ np.random.seed(0)
 playstore_reviewData= pd.read_csv("reviews.csv")
 np.random.seed(0)
 
-selectiveTitle=['app Title','Actual Downloads','Rating','appDeveloper','1 star','2 star','3 star','4 star','5 star','price']
+selectiveTitle=['app Title','Downloads','Rating','appDeveloper','1 star','2 star','3 star','4 star','5 star','price']
 playstore_data.drop(selectiveTitle, axis=1, inplace=True)
 print(playstore_data.head())
 
@@ -24,7 +24,7 @@ missing_vales=playstore_data.isnull().sum()
 print(missing_vales[0:10])
 
 print(playstore_data.head(5))
-print(playstore_data.sort_values(by=['Downloads']))
+print(playstore_data.sort_values(by=['Actual Downloads']))
 
 playstore_data['android Version'] = np.where(playstore_data['android Version'] == 'VARY', 1, 0)
 print(playstore_data['android Version'])
@@ -36,24 +36,47 @@ playstore_data['Summative Rating'] = np.where(playstore_data['Summation of 4star
 print(playstore_data['Summative Rating'])
 
 
-
-# a=50000
-# if ( playstore_data['No. of ratings'] > 500000 ):
-#     print('5')
-# else:
-#     print('4')
-# print(playstore_data['Summative Rating'])
-
-playstore_data['size'] = np.where(playstore_data['size'].isnull(), 0, 1)
 playstore_data['Summation of 1star+2star+3star'] = np.where(playstore_data['Summation of 1star+2star+3star'].isnull(), 0, 1)
 playstore_data['Summation of 4star+5star'] = np.where(playstore_data['Summation of 4star+5star'].isnull(), 0, 1)
 
-playstore_data["Downloads"]['50,000,000+'] = 1
-# playstore_data["points"][1:2] =
 print(playstore_data.head(5))
-print('Downloads')
+
+df = pd.DataFrame(playstore_data,
+                columns=pd.Index(['appId', 'Actual Downloads', 'Rounded Rating', 'No. of ratings',
+                                  'Summation of 1star+2star+3star', 'Summation of 4star+5star', 'size',
+                                  'android Version', 'Summary', 'Description'], name='attributes'))
+print(df)
+
+Raters = np.array([playstore_data['No. of ratings']])
 
 
+playstore_data['No. of ratings'] = np.where(playstore_data['No. of ratings'] >= 1000000, 5, playstore_data['No. of ratings'])
+playstore_data['No. of ratings'] = np.where(playstore_data['No. of ratings'] >= 100000, 4, playstore_data['No. of ratings'])
+playstore_data['No. of ratings'] = np.where(playstore_data['No. of ratings'] >= 10000, 3, playstore_data['No. of ratings'])
+playstore_data['No. of ratings'] = np.where(playstore_data['No. of ratings'] >= 1000, 2, playstore_data['No. of ratings'])
+playstore_data['No. of ratings'] = np.where(playstore_data['No. of ratings'] >= 100, 1,playstore_data['No. of ratings'])
+
+print(playstore_data['No. of ratings'])
+
+playstore_data['Actual Downloads'] = np.where(playstore_data['Actual Downloads'] >= 10000000, 5, playstore_data['Actual Downloads'])
+playstore_data['Actual Downloads'] = np.where(playstore_data['Actual Downloads'] >= 1000000, 4, playstore_data['Actual Downloads'])
+playstore_data['Actual Downloads'] = np.where(playstore_data['Actual Downloads'] >= 100000, 3, playstore_data['Actual Downloads'])
+playstore_data['Actual Downloads'] = np.where(playstore_data['Actual Downloads'] >= 10000, 2, playstore_data['Actual Downloads'])
+playstore_data['Actual Downloads'] = np.where(playstore_data['Actual Downloads'] >= 10, 1,playstore_data['Actual Downloads'])
+
+print(playstore_data['Actual Downloads'])
+
+playstore_data['size'] = playstore_data['size'].replace("Varies with device", 7)
+print(playstore_data['size'])
+playstore_data['size'] = np.where(playstore_data['size'] > 100, 5, playstore_data['size'])
+playstore_data['size'] = np.where(playstore_data['size'] >= 80, 4, playstore_data['size'])
+playstore_data['size'] = np.where(playstore_data['size'] >= 60, 3, playstore_data['size'])
+playstore_data['size'] = np.where(playstore_data['size'] >= 40, 2, playstore_data['size'])
+playstore_data['size'] = np.where(playstore_data['size'] >= 20, 1, playstore_data['size'])
+
+# playstore_data['size'] = np.where(playstore_data['size'] == "Varies with device", 0, playstore_data['size'])
+
+print(playstore_data['size'])
 
 # Value= [3.99, 4.99]
 # App_price = {0: 0, 3.99: 1}
