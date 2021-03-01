@@ -11,7 +11,7 @@
 import numpy as np
 import pandas as pd
 
-playstore_data = pd.read_csv("details.csv")
+playstore_data = pd.read_csv("detailsFinal.csv")
 np.random.seed(0)
 playstore_reviewData= pd.read_csv("reviews.csv")
 np.random.seed(0)
@@ -45,7 +45,7 @@ df = pd.DataFrame(playstore_data,
                 columns=pd.Index(['appId', 'Actual Downloads', 'Rounded Rating', 'No. of ratings',
                                   'Summation of 1star+2star+3star', 'Summation of 4star+5star', 'size',
                                   'android Version', 'Summary', 'Description'], name='attributes'))
-print(df)
+print(df.dtypes)
 
 Raters = np.array([playstore_data['No. of ratings']])
 
@@ -65,18 +65,31 @@ playstore_data['Actual Downloads'] = np.where(playstore_data['Actual Downloads']
 playstore_data['Actual Downloads'] = np.where(playstore_data['Actual Downloads'] >= 10, 1,playstore_data['Actual Downloads'])
 
 print(playstore_data['Actual Downloads'])
-
 playstore_data['size'] = playstore_data['size'].replace("Varies with device", 7)
+playstore_data['size'] = playstore_data['size'].astype(np.float64)
+
 print(playstore_data['size'])
-playstore_data['size'] = np.where(playstore_data['size'] > 100, 5, playstore_data['size'])
-playstore_data['size'] = np.where(playstore_data['size'] >= 80, 4, playstore_data['size'])
+print(type(playstore_data['size']))
+playstore_data['size'] = np.where(playstore_data['size'] >= 100, 1, playstore_data['size'])
+playstore_data['size'] = np.where(playstore_data['size'] >= 80, 2, playstore_data['size'])
 playstore_data['size'] = np.where(playstore_data['size'] >= 60, 3, playstore_data['size'])
-playstore_data['size'] = np.where(playstore_data['size'] >= 40, 2, playstore_data['size'])
-playstore_data['size'] = np.where(playstore_data['size'] >= 20, 1, playstore_data['size'])
-
-# playstore_data['size'] = np.where(playstore_data['size'] == "Varies with device", 0, playstore_data['size'])
+playstore_data['size'] = np.where(playstore_data['size'] >= 40, 4, playstore_data['size'])
+playstore_data['size'] = np.where(playstore_data['size'] >= 10, 5, playstore_data['size'])
 
 print(playstore_data['size'])
+
+
+
+
+# print(playstore_data.head(4))
+# for
+# if playstore_data["size"] == 1:
+#     if playstore_data["Actual Downloads"] == 1:
+#         output = "30%"
+#         print(output)
+#     else:
+#         print("0")
+
 
 # Value= [3.99, 4.99]
 # App_price = {0: 0, 3.99: 1}
