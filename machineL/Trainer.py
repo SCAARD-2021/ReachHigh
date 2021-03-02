@@ -7,6 +7,7 @@
 # ,'Outcome']
 # data=read_csv(path,names=headernames)
 # print(data.head(50))
+from collections import Counter
 
 import numpy as np
 import pandas as pd
@@ -46,6 +47,24 @@ df = pd.DataFrame(playstore_data,
                                   'Summation of 1star+2star+3star', 'Summation of 4star+5star', 'size',
                                   'android Version', 'Summary', 'Description'], name='attributes'))
 print(df.dtypes)
+
+df['Summary'] = df['Summary'].str.split(n=1).str[1]
+print(df['Summary'])
+df['Summary'] = df['Summary'].replace("is", "")
+print(df['Summary'])
+
+selected_words = ['awesome', 'great', 'fantastic', 'amazing', 'love', 'horrible', 'bad', 'terrible', 'awful', 'wow', 'hate']
+def count_words(df, selected_words):
+    words_count = Counter()
+
+    df.sentences = df.sentences.replace(r"[{}]".format(string.punctuation.replace("'","")),"")
+    df.sentences = df.sentences.str.strip().str.lower().str.split()
+    for sentence in df.sentences:
+
+        words_count.update(x for x in sentence if x in selected_words)
+        words = df.sentences.str.split(expand=True).stack()
+        words = words[words.isin(selected_words)]
+        return words.value_counts()
 
 Raters = np.array([playstore_data['No. of ratings']])
 
