@@ -45,26 +45,27 @@ print(playstore_data.head(5))
 df = pd.DataFrame(playstore_data,
                 columns=pd.Index(['appId', 'Actual Downloads', 'Rounded Rating', 'No. of ratings',
                                   'Summation of 1star+2star+3star', 'Summation of 4star+5star', 'size',
-                                  'android Version', 'Summary', 'Description'], name='attributes'))
+                                  'android Version', 'Summary', 'Description','Marks'], name='attributes'))
 print(df.dtypes)
-
+target=playstore_data['Marks']
 df['Summary'] = df['Summary'].str.split(n=1).str[1]
 print(df['Summary'])
 df['Summary'] = df['Summary'].replace("is", "")
 print(df['Summary'])
 
-selected_words = ['awesome', 'great', 'fantastic', 'amazing', 'love', 'horrible', 'bad', 'terrible', 'awful', 'wow', 'hate']
-def count_words(df, selected_words):
-    words_count = Counter()
 
-    df.sentences = df.sentences.replace(r"[{}]".format(string.punctuation.replace("'","")),"")
-    df.sentences = df.sentences.str.strip().str.lower().str.split()
-    for sentence in df.sentences:
-
-        words_count.update(x for x in sentence if x in selected_words)
-        words = df.sentences.str.split(expand=True).stack()
-        words = words[words.isin(selected_words)]
-        return words.value_counts()
+# selected_words = ['awesome', 'great', 'fantastic', 'amazing', 'love', 'horrible', 'bad', 'terrible', 'awful', 'wow', 'hate']
+# def count_words(df, selected_words):
+#     words_count = Counter()
+#
+#     df.sentences = df.sentences.replace(r"[{}]".format(string.punctuation.replace("'","")),"")
+#     df.sentences = df.sentences.str.strip().str.lower().str.split()
+#     for sentence in df.sentences:
+#
+#         words_count.update(x for x in sentence if x in selected_words)
+#         words = df.sentences.str.split(expand=True).stack()
+#         words = words[words.isin(selected_words)]
+#         return words.value_counts()
 
 Raters = np.array([playstore_data['No. of ratings']])
 
@@ -97,15 +98,32 @@ playstore_data['size'] = np.where(playstore_data['size'] >= 10, 5, playstore_dat
 
 print(playstore_data['size'])
 
+from sklearn.model_selection import train_test_split
+X_train, X_test, y_train, y_test = train_test_split(playstore_data,target,test_size=0.2)
 
+from sklearn.feature_extraction.text import CountVectorizer
+v = CountVectorizer()
+# X_train_count = v.fit_transform(X_train.values)
+# X_train_count.toarray()[:3]
 
+# from sklearn.naive_bayes import MultinomialNB
+# model = MultinomialNB()
+# model.fit(X_train_count,y_train)
+
+selected_words_count=v.transform(selected_words)
+model.predict(selected_words_count)
+
+X_test_count = v.transform(X_test)
+print(model.score(X_test_count, y_test))
+print(len(X_train))
+print(len(X_test))
 
 # print(playstore_data.head(4))
 # for
-# if playstore_data["size"] == 1:
+# if playstore_data["size"] == :
 #     if playstore_data["Actual Downloads"] == 1:
-#         output = "30%"
-#         print(output)
+#         playstore_data['Marks']= '30%'
+#
 #     else:
 #         print("0")
 
