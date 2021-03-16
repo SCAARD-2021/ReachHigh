@@ -99,10 +99,14 @@ playstore_data['size'] = np.where(playstore_data['size'] >= 10, 5, playstore_dat
 print(playstore_data['size'])
 
 from sklearn.model_selection import train_test_split
-X_train, X_test, y_train, y_test = train_test_split(playstore_data,target,test_size=0.2)
+X_train, X_test, y_train, y_test = train_test_split(playstore_data,target,test_size=0.3)
+print(len(playstore_data))
+print(len(X_train))
+print(len(X_test))
 
-from sklearn.feature_extraction.text import CountVectorizer
-v = CountVectorizer()
+
+# from sklearn.feature_extraction.text import CountVectorizer
+# v = CountVectorizer()
 # X_train_count = v.fit_transform(X_train.values)
 # X_train_count.toarray()[:3]
 
@@ -110,13 +114,13 @@ v = CountVectorizer()
 # model = MultinomialNB()
 # model.fit(X_train_count,y_train)
 
-selected_words_count=v.transform(selected_words)
-model.predict(selected_words_count)
-
-X_test_count = v.transform(X_test)
-print(model.score(X_test_count, y_test))
-print(len(X_train))
-print(len(X_test))
+# selected_words_count=v.transform(selected_words)
+# model.predict(selected_words_count)
+#
+# X_test_count = v.transform(X_test)
+# print(model.score(X_test_count, y_test))
+# print(len(X_train))
+# print(len(X_test))
 
 # print(playstore_data.head(4))
 # for
