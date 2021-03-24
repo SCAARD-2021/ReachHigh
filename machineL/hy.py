@@ -8,6 +8,10 @@ import pickle
 reviews = pd.read_csv("reviews.csv")
 reviews
 
+## Filtering the data set and creating a data set with Three coloumns 
+## Catagarizing the reviews 
+## below 3 -- Negative
+## Above 3 -- Positive
 def process_df(reviews):
     reviews1 = reviews[['Text','Score']]
     reviews1_filter = reviews1[reviews1['Score'] != 3]
