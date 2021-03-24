@@ -21,3 +21,12 @@ def process_df(reviews):
   
  reviews1 = process_df(reviews)
  reviews1.head() 
+    
+## Counting the reviews in each sentiment Catagory
+reviews1.groupby(reviews1['sentiment Analysis']).count()
+
+reviews1.shape
+
+# save the dataset
+with open('pickles/reviews1.pickle', 'wb') as data:
+    pickle.dump(reviews1, data)
