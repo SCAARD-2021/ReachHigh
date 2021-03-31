@@ -1,11 +1,10 @@
-import React,{useState} from "react";
-import {callAppLink} from '../Service/EndPoints'
+import React, { useState } from "react";
+import { callAppLink } from "../Service/EndPoints";
 import "../App.css";
 import { Link } from "react-router-dom";
 
 function Home() {
-
-  const [link, setLink,app] = useState("")
+  const [link, setLink, app] = useState("");
   const [setApp] = useState([]);
   let sampleTest;
   const handleSubmit = (e) => {
@@ -13,27 +12,33 @@ function Home() {
     sampleTest = link;
     sampleTest = sampleTest.split("?id=")[1];
     testing();
-  }
+  };
 
-  const testing = async() => {
-    const data = await callAppLink(sampleTest)
-    if(data){
+  // state = { response: {} };
+  const testing = async () => {
+    const data = await callAppLink(sampleTest);
+    if (data) {
       // setApp(data);
-      console.log(data)
+      console.log(data.title);
+      //              const response = res.data;
+      //                 this.setState({response});
+      //               });
+      //             }
     }
-  }
-
-
-
+  };
 
   return (
     <div>
       <form>
         <p>
-          <input type="text" placeholder="Paste the link.."  onChange={e => setLink(e.target.value)} />
+          <input
+            type="text"
+            placeholder="Paste the link.."
+            onChange={(e) => setLink(e.target.value)}
+          />
           {
             <Link to={"/Confirmation"}>
-              <button className="get" onClick={handleSubmit}>Submit</button>
+              <button className="get">Submit</button>
             </Link>
           }
         </p>
