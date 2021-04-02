@@ -18,25 +18,25 @@
 
   width: 85vw;
   margin: 100px auto;
-  height:   50vw;
+  height: 50vw;
 
   border-radius: 5px;
 }
-button{
+button {
   border: none;
   box-sizing: border-box;
   margin: 0 auto;
- 
+
   outline: none;
   padding: 8px;
   width: 80%;
   height: 45px;
   max-width: 100px;
-  background:#2c3e50;
+  background: #2c3e50;
   color: #fff;
   text-align: center;
   text-decoration: none;
-  
+
   transition: all 0.3s ease-out;
 }
 
@@ -51,8 +51,8 @@ input {
 .star {
   font-size: 20px;
 }
-.help{
-  margin-top: 50px;;
+.help {
+  margin-top: 50px;
   font-size: 40px;
 }
 
@@ -98,7 +98,6 @@ input {
 ::placeholder {
   color: #fff;
   opacity: 0.9;
-
 }
 
 .no {
