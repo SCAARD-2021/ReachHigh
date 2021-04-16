@@ -2,30 +2,38 @@ import React, { useState } from "react";
 import { callAppLink } from "../Service/EndPoints";
 import "../App.css";
 import { Link } from "react-router-dom";
+import Confirmation from "./Confirmation";
 
 function Home() {
-  const [link, setLink, app] = useState("");
-  const [setApp] = useState([]);
-  let sampleTest;
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  const [link, setLink] = useState([]);
+
+  const testing = async () => {
+    let sampleTest;
     sampleTest = link;
     sampleTest = sampleTest.split("?id=")[1];
-    testing();
-  };
-
-  // state = { response: {} };
-  const testing = async () => {
-    const data = await callAppLink(sampleTest);
-    if (data) {
-      // setApp(data);
-      console.log(data.title);
-      //              const response = res.data;
-      //                 this.setState({response});
-      //               });
-      //             }
+    const dataa = await callAppLink(sampleTest);
+    if (dataa) {
+      console.log(dataa);
+      setTitle(dataa.data);
     }
   };
+  const handleSubmit = (e) => {
+    try {
+      e.preventDefault();
+
+      testing();
+    } catch (error) {
+      console.log("Paste The Link");
+    }
+  };
+
+  const [rating, setRating] = useState([]);
+
+  const [appTitle, setTitle] = useState([]);
+  const [pichar, setPichar] = useState([]);
+
+  //   downloadable or not  (1 or 0)
+  // predictable rating and playStore rating
 
   return (
     <div>
@@ -36,14 +44,16 @@ function Home() {
             placeholder="Paste the link.."
             onChange={(e) => setLink(e.target.value)}
           />
-          {
-            <Link to={"/Confirmation"}>
-              <button className="get">Submit</button>
-            </Link>
-          }
+
+          <Link to={{ pathname: "/Confirmation", state: { ai: link } }}>
+            <button className="get">
+              {/* <button className="get" onClick={handleSubmit}> */}
+              Submit
+            </button>
+          </Link>
         </p>
       </form>
-      <div className="help">Help</div>
+      <div className="help">Help{rating.ratings} </div>
     </div>
   );
 }

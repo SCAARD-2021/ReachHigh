@@ -4,13 +4,11 @@ import Confirmation from "./components/Confirmation";
 import Home from "./components/Home";
 import Results from "./components/Results";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import NavBar from "./components/NavBar";
-
 class App extends Component {
   render() {
     return (
       <Router>
-        <NavBar />
+        {/* <NavBar /> */}
         <div className="App">
           <Switch>
             <Route path="/" exact component={Home} />
