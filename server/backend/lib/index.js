@@ -166,6 +166,12 @@ router.get('/developers/', (req, res) =>
     example: buildUrl(req, '/developers/' + qs.escape('DxCo Games'))
   }));
 
+router.get('/results/', (req, res) =>
+  res.status(400).json({
+	results:"hi"
+}));
+
+
 function errorHandler (err, req, res, next) {
   res.status(400).json({message: err.message});
   next();
