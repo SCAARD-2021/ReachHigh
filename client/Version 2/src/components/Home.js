@@ -27,10 +27,7 @@ function Home() {
     }
   };
 
-  const [rating, setRating] = useState([]);
-
   const [appTitle, setTitle] = useState([]);
-  const [pichar, setPichar] = useState([]);
 
   //   downloadable or not  (1 or 0)
   // predictable rating and playStore rating
@@ -53,7 +50,6 @@ function Home() {
           </Link>
         </p>
       </form>
-      <div className="help">Help{rating.ratings} </div>
     </div>
   );
 }

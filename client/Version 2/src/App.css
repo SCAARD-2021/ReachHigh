@@ -1,4 +1,4 @@
-.App {
+.container {
   text-align: center;
   display: grid;
   grid-row-gap: 50px;
@@ -135,6 +135,51 @@ input {
 .App-link {
   color: #61dafb;
 }
+
+/* RESULTS PAGE */
+
+legend {
+  font-size: 1.5em;
+}
+
+.calculateProcess {
+  float: left;
+  width: 30%;
+  padding: 10px;
+  height: 50%;
+}
+.field_set {
+  border-color: black;
+  border-radius: 10px;
+  height: 80%;
+}
+
+.points {
+  float: left;
+  width: 32%;
+  padding-left: 28px;
+  padding-top: 10px;
+}
+.field_set2 {
+  border-color: black;
+  border-radius: 10px;
+}
+
+.resultsBox {
+}
+.field_set3 {
+  border-color: black;
+  border-radius: 10px;
+}
+
+.detailedResults {
+  float: right;
+  width: 30%;
+  padding: 10px;
+  height: 50%;
+}
+
+/* RESULTS PAGE END */
 
 @keyframes App-logo-spin {
   from {
