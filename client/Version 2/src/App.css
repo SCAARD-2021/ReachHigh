@@ -151,25 +151,28 @@ legend {
 .field_set {
   border-color: black;
   border-radius: 10px;
-  height: 80%;
+  height: 500px;
 }
 
 .points {
   float: left;
   width: 32%;
-  padding-left: 28px;
+  padding-left: 36px;
   padding-top: 10px;
 }
 .field_set2 {
   border-color: black;
   border-radius: 10px;
+  height: 300px;
 }
 
 .resultsBox {
+  margin-top: 350px;
 }
 .field_set3 {
   border-color: black;
   border-radius: 10px;
+  height: 160px;
 }
 
 .detailedResults {

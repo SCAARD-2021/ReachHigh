@@ -9,7 +9,7 @@ function Confirmation(props) {
   const testing = async () => {
     let sampleTest;
     sampleTest = ai;
-    sampleTest = sampleTest.split("?id=")[1];
+    //sampleTest = sampleTest.split("?id=")[1];
     const dataa = await callAppLink(sampleTest);
     if (dataa) {
       console.log(dataa);

@@ -4,20 +4,18 @@ import Confirmation from "./components/Confirmation";
 import Home from "./components/Home";
 import Results from "./components/Results";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import Container from "./components/Container";
+import Blog from "./components/Blog";
 class App extends Component {
   render() {
     return (
       <Router>
         {/* <NavBar /> */}
         <div className="App">
-          <div className="container">
-            <Results />
-            {/* <Switch>
-            <Route path="/" exact component={Home} />
-            <Route path="/confirmation" component={Confirmation} />
-            <Route path="/Results" component={Results} />
-          </Switch> */}
-          </div>
+          <Switch>
+            <Route path="/Container" component={Container} />
+            <Route path="/Blog" component={Blog} />
+          </Switch>
         </div>
       </Router>
     );

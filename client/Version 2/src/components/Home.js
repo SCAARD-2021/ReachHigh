@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { callAppLink } from "../Service/EndPoints";
 import "../App.css";
 import { Link } from "react-router-dom";
-import Confirmation from "./Confirmation";
+import Container from "./Container";
 
 function Home() {
   const [link, setLink] = useState([]);
@@ -42,7 +42,9 @@ function Home() {
             onChange={(e) => setLink(e.target.value)}
           />
 
-          <Link to={{ pathname: "/Confirmation", state: { ai: link } }}>
+          <Link
+            to={{ pathname: "/Container/Confirmation", state: { ai: link } }}
+          >
             <button className="get">
               {/* <button className="get" onClick={handleSubmit}> */}
               Submit
