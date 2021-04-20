@@ -6,6 +6,7 @@ import Results from "./components/Results";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Container from "./components/Container";
 import Blog from "./components/Blog";
+import AboutUs from "./components/AboutUs";
 class App extends Component {
   render() {
     return (
@@ -15,6 +16,7 @@ class App extends Component {
           <Switch>
             <Route path="/Container" component={Container} />
             <Route path="/Blog" component={Blog} />
+            <Route path="/About-us" component={AboutUs} />
           </Switch>
         </div>
       </Router>
