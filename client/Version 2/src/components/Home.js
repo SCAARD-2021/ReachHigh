@@ -2,38 +2,16 @@ import React, { useState } from "react";
 import { callAppLink } from "../Service/EndPoints";
 import "../App.css";
 import { Link } from "react-router-dom";
-import Container from "./Container";
 
 function Home() {
   const [link, setLink] = useState([]);
-
-  const testing = async () => {
-    let sampleTest;
-    sampleTest = link;
-    sampleTest = sampleTest.split("?id=")[1];
-    const dataa = await callAppLink(sampleTest);
-    if (dataa) {
-      console.log(dataa);
-      setTitle(dataa.data);
-    }
-  };
-  const handleSubmit = (e) => {
-    try {
-      e.preventDefault();
-
-      testing();
-    } catch (error) {
-      console.log("Paste The Link");
-    }
-  };
-
-  const [appTitle, setTitle] = useState([]);
 
   //   downloadable or not  (1 or 0)
   // predictable rating and playStore rating
 
   return (
     <div>
+      {/* <div className="container"> */}
       <form>
         <p>
           <input
@@ -52,6 +30,7 @@ function Home() {
           </Link>
         </p>
       </form>
+      {/* </div> */}
     </div>
   );
 }

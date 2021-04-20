@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "../App.css";
 import { Link } from "react-router-dom";
 import { callAppLink } from "../Service/EndPoints";
@@ -9,7 +9,7 @@ function Confirmation(props) {
   const testing = async () => {
     let sampleTest;
     sampleTest = ai;
-    //sampleTest = sampleTest.split("?id=")[1];
+    sampleTest = sampleTest.split("?id=")[1];
     const dataa = await callAppLink(sampleTest);
     if (dataa) {
       console.log(dataa);
@@ -17,9 +17,12 @@ function Confirmation(props) {
     }
   };
   const { ai } = props.location.state;
-  testing(); //replace
 
-  console.log(props.mairu);
+  useEffect(() => {
+    testing();
+  }, []);
+
+  // console.log(props.mairu);
 
   return (
     <div className="appimage">
