@@ -197,8 +197,7 @@ let finalStatus = () => {
       status: status,
       secondAverage:secondAverage
     },
-    finalScore:finalScore,
-    finalStatus:finalStatus
+    finalScore:finalScore
   })
 });
 
