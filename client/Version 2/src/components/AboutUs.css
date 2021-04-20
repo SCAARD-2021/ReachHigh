@@ -74,10 +74,12 @@
 .about-us-third {
   display: grid;
   grid-template-columns: auto auto auto;
+  max-width: 1200px;
   padding: 10px;
 }
 .developer {
   background-color: rgba(164, 156, 156, 0.5);
+
   padding: 30px;
   font-size: 30px;
   text-align: center;

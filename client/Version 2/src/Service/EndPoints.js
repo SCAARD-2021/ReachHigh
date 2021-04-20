@@ -12,10 +12,11 @@ export const callAppLink = (apiLink) => {
   }
 };
 
-export const getResults = (apiLink) => {
+export const callResultLink = (apiLink) => {
   try {
-    return axios.get(port + "/apps/results" + apiLink);
-    //   .then((app) => console.log(app));
+    return axios.get(port + "/results/" + apiLink).then((app) => {
+      return app;
+    });
   } catch (error) {
     console.log("Unable to get results");
   }

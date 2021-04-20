@@ -1,7 +1,25 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "../App.css";
+import { callResultLink } from "../Service/EndPoints";
 
-function Results() {
+function Results(props) {
+  const [result, setResult] = useState([]);
+  const testing = async () => {
+    let sampleTest;
+    sampleTest = aId;
+    sampleTest = sampleTest.split("?id=")[1];
+    const dataa = await callResultLink(sampleTest);
+    if (dataa) {
+      console.log(dataa);
+      setResult(dataa.data);
+    }
+  };
+  const { aId } = props.location.state;
+
+  useEffect(() => {
+    testing();
+  }, []);
+
   return (
     <div>
       {/* //FIRST CONTAINER IN RESULTS PAGE */}
@@ -14,11 +32,7 @@ function Results() {
       {/* POINTS CONTAINER / FIST MIDDLE CONTAINER */}
       <div className="points">
         <fieldset className="field_set2">
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas id
-            turpis vehicula, cursus orci vel, feugiat metus. Nullam bibendum
-            lacinia auctor.
-          </p>
+          {/* <p>{result.attractiveness.firstAverage}</p> */}
           <legend>Points to Each Elements</legend>
         </fieldset>
       </div>

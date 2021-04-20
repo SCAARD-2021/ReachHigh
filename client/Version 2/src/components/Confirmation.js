@@ -32,7 +32,7 @@ function Confirmation(props) {
       <span className="confirm">
         <p> Is this Your app looking for ? </p>
         {
-          <Link to={"/Results"}>
+          <Link to={{ pathname: "/Container/Results", state: { aId: ai } }}>
             <button className="yes">Yes</button>
           </Link>
         }
