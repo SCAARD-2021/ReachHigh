@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { callAppLink } from "../Service/EndPoints";
 import "../App.css";
 import { Link } from "react-router-dom";
 

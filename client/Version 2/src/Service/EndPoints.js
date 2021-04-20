@@ -1,11 +1,11 @@
 import axios from "axios";
 import { instance } from "./HttpClient";
 
-const port = "http://localhost:1005/scaard";
+const port = "http://localhost:8080/scaard";
 
 export const callAppLink = (apiLink) => {
   try {
-    return axios.get(port + "/apps/" + apiLink);
+    return instance.get(port + "/apps/" + apiLink);
     //   .then((app) => console.log(app));
   } catch (error) {
     console.log("Api error Occur");

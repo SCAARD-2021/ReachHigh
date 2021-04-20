@@ -1,0 +1,19 @@
+{
+  "name": "reachhigh",
+  "version": "1.0.0",
+  "description": "\"Team SCAARD SDGP Project\"",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SCAARD-2021/ReachHigh.git"
+  },
+  "author": "Adrian,Abdullah,Caucidheesan,Delojan,Rinoza,Shakir",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SCAARD-2021/ReachHigh/issues"
+  },
+  "homepage": "https://github.com/SCAARD-2021/ReachHigh#readme"
+}
