@@ -285,13 +285,14 @@ legend {
 }
 
 .resultsBox h1 {
-  font-size: 50px;
+  font-size: 70px;
+  margin-top: -1em;
   color: rgb(208, 187, 187);
-  padding: 4px;
-  margin-bottom: 2em;
 }
 .resultsBox h2 {
-  font-size: 50px;
+  color: red;
+  margin-top: -0.01em;
+  font-size: 60px;
 }
 
 .field_set3 {
@@ -317,7 +318,7 @@ legend {
   color: #0a134a;
 }
 .detailedResults h3 {
-  font-size: 25px;
+  font-size: 23px;
   color: #0a134a;
 }
 

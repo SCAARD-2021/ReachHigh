@@ -19,7 +19,8 @@ function Results() {
   const testing = async () => {
     const dataa = await callResultLink();
     console.log(dataa.data);
-    setFirstAverage(dataa.data.attractiveness.firstAverage);
+    //setFirstAverage(dataa.data.attractiveness.firstAverage);
+    setFirstAverage(62);
     setDownloads(dataa.data.attractiveness.downloads);
     setEditors(dataa.data.attractiveness.editors);
     setFree(dataa.data.attractiveness.free);
