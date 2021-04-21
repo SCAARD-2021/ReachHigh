@@ -4,28 +4,21 @@ import { Link } from "react-router-dom";
 import { callAppLink } from "../Service/EndPoints";
 
 function Confirmation(props) {
-  const [app, setTitle] = useState([]);
+  const { ai } = props.location.state;
+  // const ai = "?id=com.facebook.lite";
+  const [app, setApp] = useState([]);
 
   const testing = async () => {
-    let sampleTest;
-    sampleTest = ai;
-    console.log(3)
+    let sampleTest = ai;
     sampleTest = sampleTest.split("?id=")[1];
-    console.log(1)
     const dataa = await callAppLink(sampleTest);
-    console.log(5)
-    if (dataa) {
-      console.log(dataa);
-      setTitle(dataa.data);
-    }
+    console.log(dataa.data)
+    setApp(dataa.data);
   };
-  const { ai } = props.location.state;
 
   useEffect(() => {
     testing();
   }, []);
-
-  // console.log(props.mairu);
 
   return (
     <div className="appimage">
@@ -35,7 +28,7 @@ function Confirmation(props) {
       <span className="confirm">
         <p> Is this Your app looking for ? </p>
         {
-          <Link to={{ pathname: "/Container/Results", state: { aId: ai } }}>
+          <Link to={{ pathname: "/Container/Results", state: { just:"hi"} }}>
             <button className="yes">Yes</button>
           </Link>
         }

@@ -2,19 +2,15 @@ import React, { useEffect, useState } from "react";
 import "../App.css";
 import { callResultLink } from "../Service/EndPoints";
 
-function Results(props) {
-  const [result, setResult] = useState([]);
+function Results() {
+
+  const [firstAverage, setFirstAverage] = useState([]);
+
   const testing = async () => {
-    let sampleTest;
-    sampleTest = aId;
-    sampleTest = sampleTest.split("?id=")[1];
-    const dataa = await callResultLink(sampleTest);
-    if (dataa) {
-      console.log(dataa);
-      setResult(dataa.data);
-    }
+    const dataa = await callResultLink();
+    console.log(dataa.data.attractiveness.firstAverage)
+    setFirstAverage(dataa.data.attractiveness.firstAverage);
   };
-  const { aId } = props.location.state;
 
   useEffect(() => {
     testing();
@@ -32,7 +28,7 @@ function Results(props) {
       {/* POINTS CONTAINER / FIST MIDDLE CONTAINER */}
       <div className="points">
         <fieldset className="field_set2">
-          {/* <p>{result.attractiveness.firstAverage}</p> */}
+          <p>{firstAverage}</p>
           <legend>Points to Each Elements</legend>
         </fieldset>
       </div>

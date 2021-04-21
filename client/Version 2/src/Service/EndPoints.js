@@ -1,22 +1,18 @@
 import axios from "axios";
-import { instance } from "./HttpClient";
 
-const port = "http://localhost:8080/scaard";
+const port = "http://localhost:1005/scaard";
 
 export const callAppLink = (apiLink) => {
   try {
-    return instance.get(port + "/apps/" + apiLink);
-    //   .then((app) => console.log(app));
+    return axios.get(port + "/app/" + apiLink);
   } catch (error) {
-    console.log("Api error Occur");
+    console.log("Api error Ocur");
   }
 };
 
-export const callResultLink = (apiLink) => {
+export const callResultLink = () => {
   try {
-    return axios.get(port + "/results/" + apiLink).then((app) => {
-      return app;
-    });
+    return axios.get(port + "/results/");
   } catch (error) {
     console.log("Unable to get results");
   }

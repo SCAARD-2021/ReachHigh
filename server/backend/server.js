@@ -5,7 +5,7 @@ const router = require('./lib');
 const cors = require('cors');
 
 const app = Express();
-const port = process.env.PORT || 8080;
+const port = process.env.PORT || 1005;
 
 app.use(cors());
 app.use('/scaard/', router);
