@@ -79,7 +79,7 @@ function Confirmation(props) {
         <Typewriter
           className="conType2"
           onInit={(Typewriter) => {
-            Typewriter.typeString("Hello World this is S C A A R D").start();
+            Typewriter.typeString("Hello World ").start();
           }}
         />
       </div>

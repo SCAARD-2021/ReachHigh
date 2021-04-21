@@ -11,7 +11,7 @@ function Container() {
       <Router>
         {/* <NavBar /> */}
         <Switch>
-          <Route path="/Container/Home" exact component={Home} />
+          <Route path="/Container/Home" component={Home} />
           <Route path="/Container/Confirmation" component={Confirmation} />
           <Route path="/Container/Results" component={Results} />
         </Switch>

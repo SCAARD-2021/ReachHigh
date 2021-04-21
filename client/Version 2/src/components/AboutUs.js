@@ -30,10 +30,10 @@ function AboutUs() {
       </div>
       <div className="about-us-second">
         <div className="about-us-text2">
-          <h2 id="aboutUsH2">
-            its all started in DEVADHA
+          <h2 id="aboutUsH4">
             <br />
             <br />
+            Its all started in DEVADHA
           </h2>
           <h3 id="aboutUsH3">
             ENNATHA SOLLA NAAN ENNATHA SOLLA SOLLA VARTHAYA ILLA...
