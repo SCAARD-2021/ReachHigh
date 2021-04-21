@@ -2,9 +2,9 @@ const express = require('express');
 const router = express.Router();
 const controllers = require('./controllers');
 
-router.get('/', controllers.saySomething)
+router.get('/', controllers.getResults)
 router.get('/app/*', controllers.getApp)
-router.get('/results/*', controllers.getResults)
+router.get('/results/*', controllers.rough)
 
 // app.get('/json', respondJson)
 // app.get('/echo', respondEcho)

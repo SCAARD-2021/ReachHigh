@@ -71,9 +71,9 @@ const predict = (text, model, metadata) => {
     let count= 0;
     text.forEach(function (prediction) {
       // console.log(` ${prediction}`);
-      let perc = predict(prediction, model, metadata);
+      let perc = predict(prediction.text, model, metadata);
       sum += parseFloat(perc, 10);
-      scores.push(`${count++}|${perc}`);
+      scores.push(`${count++}|${perc}|${prediction.text}`);
     })
     scores.sort(function(a, b){
       let x = parseFloat(a.split('|')[1])

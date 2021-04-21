@@ -17,7 +17,9 @@ class appResult{
 //   finalScore:finalScore,
 //   finalStatus:"Good"
       setAttractiveness(minInstalls,editors,free){
-        let a,b,c = 0;
+        let a = 0 
+        let b = 0 
+        let c = 0;
         if(minInstalls>downloadBorder){
             this.attractiveness.downloads = 1;
             a = 1;
@@ -47,15 +49,8 @@ class appResult{
         this.trustworthiness.topNegative = arrNegative;
         this.trustworthiness.secondAverage = ((this.trustworthiness.percentage+this.trustworthiness.rating)/110)*100;
     }
-
-    getAppResults(){
-        return {
-            attractiveness:this.attractiveness,
-            trustworthiness:this.trustworthiness,
-            finalScore:this.finalScore,
-            finalStatus:this.finalStatus}
-    }
 }
 
-
-// module.exports.run = run; 
+module.exports = {
+    appResult
+};
