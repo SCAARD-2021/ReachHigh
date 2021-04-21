@@ -1,19 +1,19 @@
 {
-  "name": "reachhigh",
+  "name": "final",
   "version": "1.0.0",
-  "description": "\"Team SCAARD SDGP Project\"",
+  "description": "SDGP - ReachHigh By SCAARD",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/SCAARD-2021/ReachHigh.git"
-  },
-  "author": "Adrian,Abdullah,Caucidheesan,Delojan,Rinoza,Shakir",
+  "author": "Adrian",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/SCAARD-2021/ReachHigh/issues"
-  },
-  "homepage": "https://github.com/SCAARD-2021/ReachHigh#readme"
+  "dependencies": {
+    "@tensorflow/tfjs": "^3.4.0",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "google-play-scraper": "^8.0.2",
+    "node-fetch": "^2.6.1"
+  }
 }
