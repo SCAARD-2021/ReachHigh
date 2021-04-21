@@ -39,6 +39,29 @@ button {
 
   transition: all 0.3s ease-out;
 }
+.btn-group .button {
+  float: right;
+  margin-top: 10px;
+  margin-right: 5px;
+}
+.btn-group .button:hover {
+  background-color: #6e94a8;
+}
+.fieldset {
+  border-color: white;
+  height: 200px;
+  margin-top: -130px;
+}
+.Begin{
+  font-size: 20px;
+}
+.Begin:hover {
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
+  }
+  .banner{
+    opacity: 0.6;
+    box-shadow: whitesmoke;
+  }
 
 input {
   margin: 0 50px;
