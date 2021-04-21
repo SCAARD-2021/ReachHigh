@@ -62,24 +62,32 @@ const predict = (text, model, metadata) => {
   }
 
   const run = async (text) => {
+    console.log("loading Model")
     const model = await loadModel(); 
     const metadata = await getMetaData();
+    console.log("Model - Loaded. Now calculating")
     let scores = [];
     let sum = 0;
+    let count= 0;
     text.forEach(function (prediction) {
       // console.log(` ${prediction}`);
       let perc = predict(prediction, model, metadata);
       sum += parseFloat(perc, 10);
-      scores.push(perc);
+      scores.push(`${count++}|${perc}`);
     })
+    scores.sort(function(a, b){
+      let x = parseFloat(a.split('|')[1])
+      let y = parseFloat(b.split('|')[1])
+      return x - y;
+    }); 
     return({
       scoreList:scores,totalScore:(sum/text.length)
     });
   }
 
 async function test(){
- let tet =  await run(["Whatsapp Boy","Bad Boy","Very Good","I will Recommend This to my Friends"])
-console.log(tet)
+  let tet =  await run(["Whatsapp Boy","Bad Boy","Very Good","I will Recommend This to my Friends"])
+  console.log(tet)
 }
-test()
+// test()
 module.exports.run = run; 
