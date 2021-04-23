@@ -12,11 +12,14 @@ class appResult{
                 secondAverage:0.0
               };
         this.finalScore = 0.0;
-        this.finalStatus= "Good";}
+        this.finalStatus= "Good";
+        this.title = "SCAARD";
+        this.icon="asdasasa";
+    }
         
 //   finalScore:finalScore,
 //   finalStatus:"Good"
-      setAttractiveness(minInstalls,editors,free){
+      setAttractiveness(minInstalls,editors,free,titl,ico,ra){
         let a = 0 
         let b = 0 
         let c = 0;
@@ -32,11 +35,13 @@ class appResult{
             this.attractiveness.free = 1;
             c = 1;
         }
-        this.attractiveness.firstAverage = ((a+b+c)/3)*100;
+        this.title = titl;
+        this.icon = ico;
+        this.attractiveness.firstAverage = Math.floor(((a+b+c)/3)*100);
+        this.trustworthiness.rating = Math.floor(ra*2);
     }
 
-    setTrustworthiness(rate,score,arrPositive,arrNegative){
-        this.trustworthiness.rating = rate*2;
+    setTrustworthiness(score,arrPositive,arrNegative){
         this.trustworthiness.percentage = Math.floor(score*100);
         if(this.trustworthiness.percentage>=70){
             this.trustworthiness.status = "Good"
@@ -47,7 +52,13 @@ class appResult{
         }
         this.trustworthiness.topPositive = arrPositive;
         this.trustworthiness.topNegative = arrNegative;
-        this.trustworthiness.secondAverage = ((this.trustworthiness.percentage+this.trustworthiness.rating)/110)*100;
+        this.trustworthiness.secondAverage = Math.floor(((this.trustworthiness.percentage+this.trustworthiness.rating)/110)*100);
+        this.finalScore = (this.trustworthiness.secondAverage*70+this.attractiveness.firstAverage*30)/100;
+        if(this.finalScore<60){
+            this.finalStatus= "Bad";
+        }else{
+            this.finalStatus ="Good";
+        }
     }
 }
 

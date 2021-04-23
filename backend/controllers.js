@@ -3,10 +3,8 @@ const {appResult} = require('./appResult');
 const { run } = require('./sentiment');
 
 const results = new appResult();
-var hi='com.facebook.lite';
-// var hi = 'com.PloyPlayGames1.RockScissorsPaperOnline1'
-var ratings = 3;
-
+var currentApp='com.facebook.lite';
+// var currentApp= 'com.PloyPlayGames1.RockScissorsPaperOnline1'
 const saySomething = (req, res, next) => {
     res.status(200).json({
         body: hi
@@ -14,15 +12,16 @@ const saySomething = (req, res, next) => {
 };
 
 const getApp = (req, res, next) => {
-    var appId = req.url.split('app/')[1];
-    appId = "com.facebook.lite";
+  var appId = req.url.split('app/')[1];
+  appId = appId.split('&')[0];
+    currentApp=appId;
     console.log(appId)
     gplay.app({appId:appId}).then(
         async (app) =>{
-            hi = appId;
-            ratings = app.score;
-            results.setAttractiveness(app.minInstalls,app.editorsChoice,app.free)
-            res.status(200).json(results);
+            // currentApp= appId;
+            results.setAttractiveness(app.minInstalls,app.editorsChoice,app.free,app.title,app.icon,app.score)
+            console.log(app)
+            res.status(200).json(app);
         }
     ).catch((err) =>{
       console.log(err)
@@ -31,11 +30,30 @@ const getApp = (req, res, next) => {
 }
 
 const getResults = (req, res, next) => {
+  let topPositive = ["Not Possible","Not Possible","Not Possible","Not Possible","Not Possible"];
+  let topNegative = ["Not Possible","Not Possible","Not Possible","Not Possible","Not Possible"];
   gplay.reviews({
-    appId:hi,num:1000}).then(async (reviews) =>{
+    appId:currentApp,num:10}).then(async (reviews) =>{
       let sentiments = await run(reviews.data);
-
-      res.status(200).json(sentiments)
+      var noRev = sentiments.scoreList.length;
+      if(noRev>=10){
+        topPositive =[]; topNegative = [];
+        for(var i=0;i<5;i++){
+          var rev = sentiments.scoreList[i].split("|")[2];
+          topNegative.push(rev)
+        }
+        sentiments.scoreList.slice(Math.max(noRev - 5, 1)).forEach(
+          (revi)=>{
+          var rev = revi.split("|")[2];
+          topPositive.push(rev) 
+          }
+        )
+      }
+      topPositive[0] = sentiments.scoreList[sentiments.scoreList.length-1].split('|')[2]
+      topNegative[0] = sentiments.scoreList[0].split('|')[2]
+        results.setTrustworthiness(sentiments.totalScore,topPositive,topNegative);
+    console.log(results);
+      res.status(200).json(results)
     })
 };
 
@@ -45,8 +63,7 @@ const rough = (req, res, next) =>{
     console.log(appId)
     gplay.app({appId:appId}).then(
         async (app) =>{
-            hi = appId;
-            ratings = app.score;
+            currentApp= appId;
             results.setAttractiveness(app.minInstalls,app.editorsChoice,app.free)
             res.status(200).json(results);
         }

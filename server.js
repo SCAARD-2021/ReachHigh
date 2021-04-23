@@ -22,10 +22,10 @@ app.use('/scaard/',routes)
 // This middleware informs the express application to serve our compiled React files
 if (process.env.NODE_ENV === 'production' || process.env.NODE_ENV === 'staging') {
     console.log("Hi");
-    app.use(express.static(path.join(__dirname, 'client/Version 2/build')));
+    app.use(express.static(path.join(__dirname, 'reachHigh-heb-app/build')));
 
     app.get('*', function (req, res) {
-        res.sendFile(path.join(__dirname, 'client/Version2 /build', 'index.html'));
+        res.sendFile(path.join(__dirname, 'reachHigh-heb-app/build', 'index.html'));
     });
 };
 
