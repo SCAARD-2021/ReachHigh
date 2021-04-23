@@ -2,7 +2,7 @@ import axios from "axios";
 
 const port = "http://localhost:1005/scaard";
 const instance = axios.create({
-  baseURL:'https://localhost:1005'
+  baseURL:'https://localhost:1005/scaard'
 });
 export const callAppLink = (apiLink) => {
   try {
