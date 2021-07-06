@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const port = "http://localhost:1005/scaard";
+const port = "/scaard";
 
 export const callAppLink = (apiLink) => {
   try {
