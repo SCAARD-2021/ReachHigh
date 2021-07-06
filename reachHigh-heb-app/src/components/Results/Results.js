@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import { callResultLink } from "../../Service/EndPoints";
 import ReviewsBar from "../reviews/ReviewsBar";
 import { BiArrowToTop } from "react-icons/bi";
+import { SpinnerDotted } from 'spinners-react';
 
 function Results() {
   const [firstAverage, setFirstAverage] = useState([]);
@@ -46,6 +47,7 @@ function Results() {
     setFinalScore(dataa.data.finalScore);
     // setFinalScore(56);
     setFinalStatus(dataa.data.finalStatus);
+    document.getElementById('loader').remove();
     loadDone({visibility:'visible'});
     
   };
@@ -54,6 +56,8 @@ function Results() {
     testing();
   }, []);
   return (
+    <>
+    <center id="loader"><SpinnerDotted size={90} thickness={180} speed={76} color="#36ad47" /></center>
     <div style={loadStyle}>
       <div className="resultContain">
         <div className="subA">
@@ -102,6 +106,7 @@ function Results() {
         </div>
       </div>
     </div>
+    </>
   );
 }
 
