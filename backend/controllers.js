@@ -33,7 +33,7 @@ const getResults = (req, res, next) => {
   let topPositive = ["Not Possible","Not Possible","Not Possible","Not Possible","Not Possible"];
   let topNegative = ["Not Possible","Not Possible","Not Possible","Not Possible","Not Possible"];
   gplay.reviews({
-    appId:currentApp,num:10}).then(async (reviews) =>{
+    appId:currentApp,num:100}).then(async (reviews) =>{
       let sentiments = await run(reviews.data);
       var noRev = sentiments.scoreList.length;
       if(noRev>=10){
@@ -73,7 +73,15 @@ const rough = (req, res, next) =>{
     })
 }
 
-module.exports.saySomething = saySomething;
+const r = (req,res,next) => {
+  gplay.reviews({
+    appId:"com.emallstudio.woh",num:100}).then(async (reviews) =>{
+      let sentiments = await run(reviews.data);
+      res.status(200).json(sentiments);
+    })
+}
+
+module.exports.r= r;
 module.exports.getApp = getApp;
 module.exports.getResults = getResults;
 module.exports.rough = rough;

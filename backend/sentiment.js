@@ -1,7 +1,7 @@
 const tf = require("@tensorflow/tfjs");
 
 const fetch = require("node-fetch");
-
+  // https://github.com/tensorflow/tfjs-examples/tree/master/sentiment
 const getMetaData = async () => {
     const metadata = await fetch("https://storage.googleapis.com/tfjs-models/tfjs/sentiment_cnn_v1/metadata.json")
     return metadata.json()
