@@ -58,6 +58,9 @@
   .resultContainsss {
     flex-direction: column;
   }
+  #loader{
+    margin: 30%;
+  }
 }
 
 .resultContainsss {
