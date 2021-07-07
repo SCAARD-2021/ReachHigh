@@ -50,6 +50,9 @@
 .headH {
   text-align: center;
 }
+#loader{
+  margin: 17%;
+}
 
 @media screen and (max-width: 700px) {
   .resultContain {
@@ -59,7 +62,7 @@
     flex-direction: column;
   }
   #loader{
-    margin: 30%;
+    margin-top: 50%;
   }
 }
 
@@ -108,9 +111,4 @@
 .fainalskor {
   font-size: 4em;
   margin-top: 0em;
-}
-
-#loader{
-  position:relative;
-  margin: 17%;
 }
