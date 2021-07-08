@@ -12,7 +12,7 @@ function AppDeveloper() {
   const [link, setLink] = useState([]);
   const [btn, setBtn] = useState("hidden");
   const [load, setStat] = useState(
-    "Tip : 99% of the people will at least have android version JellyBean "
+    "Tip : Copy paste the below given URL https://play.google.com/store/apps/details?id=com.tinder.tinderlite "
   );
   const [loading, setLoading] = useState("");
   const [app, setApp] = useState([]);

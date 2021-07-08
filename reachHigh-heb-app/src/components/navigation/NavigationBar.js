@@ -26,18 +26,8 @@ function NavigationBar() {
             <a href="#home">Home</a>
           </li>
         </Link>
-        <Link to={{ pathname: "/blog", state: { just: "hi" } }}>
-          <li>
-            <a href="#news">Blog</a>
-          </li>
-        </Link>
-        <Link to={{ pathname: "/", state: { just: "hi" } }}>
-          <li className="right">
-            <a href="#contact">Contact US</a>
-          </li>
-        </Link>
         <Link to={{ pathname: "/about-us", state: { just: "hi" } }}>
-          <li className="right">
+          <li>
             <a href="#about">About US</a>
           </li>
         </Link>
